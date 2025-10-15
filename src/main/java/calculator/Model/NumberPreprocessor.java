@@ -1,4 +1,4 @@
-package calculator.Preprocess;
+package calculator.Model;
 
 public class NumberPreprocessor {
 
