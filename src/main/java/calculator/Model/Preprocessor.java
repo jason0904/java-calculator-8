@@ -1,7 +1,5 @@
 package calculator.Model;
 
-import java.util.ArrayList;
-import java.util.List;
 import calculator.Util.Util;
 
 public class Preprocessor {
@@ -62,7 +60,7 @@ public class Preprocessor {
             else if(Util.isCharInteger(calculateStringBuilder.charAt(0))) {
                 //끝나면 전 숫자 반환.
                 if(!Util.isCharInteger(LastChar)) {
-                    numberRepository.add(numberPreprocessor.returnNumber());
+                    numberRepository.addNumber(numberPreprocessor.returnNumber());
                     numberPreprocessor.resetTempNumber();
                 }
                 numberPreprocessor.numberContinuousCharCalculate(calculateStringBuilder.charAt(0));

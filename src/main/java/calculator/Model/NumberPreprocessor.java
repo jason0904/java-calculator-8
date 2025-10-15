@@ -9,7 +9,7 @@ public class NumberPreprocessor {
     }
 
     public Long returnNumber() {
-        return Long.parseLong(numberStringBuilder);
+        return Long.parseLong(numberStringBuilder.toString());
     }
     
     public void resetTempNumber() {
