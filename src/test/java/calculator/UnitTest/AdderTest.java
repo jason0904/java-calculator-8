@@ -4,12 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import calculator.Adder;
+import calculator.Model.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class CalculatorTest {
+public class AdderTest {
 
 
 
@@ -30,7 +30,7 @@ public class CalculatorTest {
     @Test
     @DisplayName("정상적인 합산 테스트")
     public void normalSumTest() {
-        Adder adder = new adder();
+        Adder adder = new Adder();
         
         List<Long> testList = new ArrayList<>();
 
