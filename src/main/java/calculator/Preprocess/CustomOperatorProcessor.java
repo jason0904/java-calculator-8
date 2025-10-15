@@ -6,7 +6,23 @@ public class CustomOperatorProcessor {
      * 커스텀 연산자 모드인지 여부 판단, 커스터 오퍼레이터 저장.
      */
 
+    private static CustomOperatorProcessor customOperatorProcessorInstance;
     private char customOperator;
+    private boolean checkCustomOperatorFlag = false;
+
+    public static CustomOperatorProcessor getInstance() {
+        if (customOperatorProcessorInstance == null) customOperatorProcessorInstance = new CustomOperatorProcessor();
+        return customOperatorProcessorInstance;
+    }
+
+    public boolean getCheckCustomOperatorFlag() {
+        return checkCustomOperatorFlag;
+    }
+
+    public void setCustomOperatorFlag(boolean checkCustomOperatorFlag) {
+        this.checkCustomOperatorFlag = checkCustomOperatorFlag;
+    }
+
 
     public char getCustomOperator() {
         return customOperator;
