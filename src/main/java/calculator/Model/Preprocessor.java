@@ -9,11 +9,18 @@ public class Preprocessor {
      */
     
 
-    private NumberRepository numberRepository = new NumberRepository();
     private Character LastChar = null;
-    private CustomOperatorProcessor customOperatorProcessor = CustomOperatorProcessor.getInstance();
-    private OperatorPreprocessor operatorPreprocessor = new OperatorPreprocessor();
-    private NumberPreprocessor numberPreprocessor = new NumberPreprocessor();
+    private final NumberPreprocessor numberPreprocessor = new NumberPreprocessor();
+    private final CustomOperatorProcessor customOperatorProcessor = new CustomOperatorProcessor();
+    private final NumberRepository numberRepository;
+    private final OperatorPreprocessor operatorPreprocessor;
+
+    public Preprocessor(NumberRepository numberRepository) {
+        this.numberRepository = numberRepository;
+        this.operatorPreprocessor = new OperatorPreprocessor(customOperatorProcessor);
+    }
+
+    
 
     public boolean checkStringEmpty(String calculateString) {
         if(calculateString.length() == 0) return true;
