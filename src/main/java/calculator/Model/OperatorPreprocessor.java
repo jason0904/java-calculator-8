@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 public class OperatorPreprocessor {
 
-    private final CustomOperatorProcessor customOperatorProcessor;
+    private final CustomOperatorPreprocessor customOperatorProcessor;
     private final List<Character> operatorList = new ArrayList<>(Arrays.asList(':',','));
 
-    public OperatorPreprocessor(CustomOperatorProcessor customOperatorProcessor) {
+    public OperatorPreprocessor(CustomOperatorPreprocessor customOperatorProcessor) {
         this.customOperatorProcessor = customOperatorProcessor;
     }
     
