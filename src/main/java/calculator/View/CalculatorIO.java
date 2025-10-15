@@ -20,7 +20,7 @@ public class CalculatorIO {
 
     }
 
-    public void Output(int result) {
+    public void Output(Long result) {
         System.out.printf(Output_String, result);
     }
 
