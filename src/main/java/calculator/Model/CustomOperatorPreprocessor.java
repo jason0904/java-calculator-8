@@ -1,17 +1,17 @@
 package calculator.Model;
 
-public class CustomOperatorProcessor {
+public class CustomOperatorPreprocessor {
 
     /*
      * 커스텀 연산자 모드인지 여부 판단, 커스터 오퍼레이터 저장.
      */
 
-    private static CustomOperatorProcessor customOperatorProcessorInstance;
+    private static CustomOperatorPreprocessor customOperatorProcessorInstance;
     private char customOperator;
     private boolean checkCustomOperatorFlag = false;
 
-    public static CustomOperatorProcessor getInstance() {
-        if (customOperatorProcessorInstance == null) customOperatorProcessorInstance = new CustomOperatorProcessor();
+    public static CustomOperatorPreprocessor getInstance() {
+        if (customOperatorProcessorInstance == null) customOperatorProcessorInstance = new CustomOperatorPreprocessor();
         return customOperatorProcessorInstance;
     }
 
@@ -29,7 +29,7 @@ public class CustomOperatorProcessor {
     }
 
     public boolean checkCustomOperatorMode(String calculateString) {
-        if(calculateString.substring(0, 1).equals("//") && calculateString.substring(3,5).equals("\\n")) {
+        if(calculateString.substring(0, 2).equals("//") && calculateString.substring(3,6).equals("\\n")) {
             return true;
         }
         return false;

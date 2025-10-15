@@ -11,7 +11,7 @@ public class Preprocessor {
 
     private Character LastChar = null;
     private final NumberPreprocessor numberPreprocessor = new NumberPreprocessor();
-    private final CustomOperatorProcessor customOperatorProcessor = new CustomOperatorProcessor();
+    private final CustomOperatorPreprocessor customOperatorProcessor = new CustomOperatorPreprocessor();
     private final NumberRepository numberRepository;
     private final OperatorPreprocessor operatorPreprocessor;
 
@@ -66,7 +66,7 @@ public class Preprocessor {
             //숫자이면 숫자계산
             else if(Util.isCharInteger(calculateStringBuilder.charAt(0))) {
                 //끝나면 전 숫자 반환.
-                if(!Util.isCharInteger(LastChar)) {
+                if(LastChar != null && !Util.isCharInteger(LastChar)) {
                     numberRepository.addNumber(numberPreprocessor.returnNumber());
                     numberPreprocessor.resetTempNumber();
                 }
@@ -81,6 +81,7 @@ public class Preprocessor {
             calculateStringBuilder.deleteCharAt(0);
         }
         
+        numberRepository.addNumber(numberPreprocessor.returnNumber());
     }
 
     
