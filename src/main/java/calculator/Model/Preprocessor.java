@@ -11,7 +11,7 @@ public class Preprocessor {
      */
     
 
-    private List<Long> numbers = new ArrayList<>();
+    private NumberRepository numberRepository = new NumberRepository();
     private Character LastChar = null;
     private CustomOperatorProcessor customOperatorProcessor = CustomOperatorProcessor.getInstance();
     private OperatorPreprocessor operatorPreprocessor = new OperatorPreprocessor();
@@ -62,7 +62,7 @@ public class Preprocessor {
             else if(Util.isCharInteger(calculateStringBuilder.charAt(0))) {
                 //끝나면 전 숫자 반환.
                 if(!Util.isCharInteger(LastChar)) {
-                    numbers.add(numberPreprocessor.returnNumber());
+                    numberRepository.add(numberPreprocessor.returnNumber());
                     numberPreprocessor.resetTempNumber();
                 }
                 numberPreprocessor.numberContinuousCharCalculate(calculateStringBuilder.charAt(0));
