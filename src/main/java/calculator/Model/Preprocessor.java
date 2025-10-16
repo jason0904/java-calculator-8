@@ -49,7 +49,7 @@ public class Preprocessor {
                 customOperatorProcessor.setCustomOperatorFlag(true);
                 customOperatorProcessor.setCustomOperator(calculateStringBuilder.charAt(2));
                 //마지막 문자 하나를 남겨두는 이유는 마지막에 하나를 더 삭제하기 때문.
-                calculateStringBuilder.delete(0,5);
+                calculateStringBuilder.delete(0,4);
             }
             //연산자이면 그냥 놔두기.
             else if(operatorPreprocessor.isCharOperator(calculateStringBuilder.charAt(0))) {
@@ -66,8 +66,8 @@ public class Preprocessor {
             //숫자이면 숫자계산
             else if(Util.isCharInteger(calculateStringBuilder.charAt(0))) {
                 //끝나면 전 숫자 반환.
-                if(LastChar != null && !Util.isCharInteger(LastChar)) {
-                    numberRepository.addNumber(numberPreprocessor.returnNumber());
+                if(LastChar != null && LastChar != 'n' && !Util.isCharInteger(LastChar)) {
+                    if(!numberPreprocessor.isNumberStringEmpty())numberRepository.addNumber(numberPreprocessor.returnNumber());
                     numberPreprocessor.resetTempNumber();
                 }
                 numberPreprocessor.numberContinuousCharCalculate(calculateStringBuilder.charAt(0));

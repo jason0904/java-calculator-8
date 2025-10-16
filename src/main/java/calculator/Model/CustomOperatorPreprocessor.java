@@ -29,7 +29,7 @@ public class CustomOperatorPreprocessor {
     }
 
     public boolean checkCustomOperatorMode(String calculateString) {
-        if(calculateString.substring(0, 2).equals("//") && calculateString.substring(3,6).equals("\\n")) {
+        if(calculateString.startsWith("//") && calculateString.substring(3,5).equals("\\n")) {
             return true;
         }
         return false;

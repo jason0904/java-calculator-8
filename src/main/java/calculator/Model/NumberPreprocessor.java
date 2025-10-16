@@ -16,5 +16,10 @@ public class NumberPreprocessor {
         numberStringBuilder.delete(0, numberStringBuilder.length());
     }
 
+    public boolean isNumberStringEmpty() {
+        if(numberStringBuilder.length() == 0) return true;
+        return false;
+    }
+
     
 }
