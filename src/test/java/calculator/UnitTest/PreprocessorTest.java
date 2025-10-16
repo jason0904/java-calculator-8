@@ -74,4 +74,27 @@ public class PreprocessorTest {
     
     }
 
+    //잘못된 문자 에러 체크
+    @Test
+    @DisplayName("잘못된 문자 에러 테스트")
+    public void invalidCharacterTest() {
+        NumberRepository numberRepository = new NumberRepository();
+        Preprocessor preprocessor = new Preprocessor(numberRepository);
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing("1,a2");});
+    }
+
+    //정상 구동 체크
+    @Test
+    @DisplayName("정상 구동 테스트")
+    public void normalProcessTest() {
+        NumberRepository numberRepository = new NumberRepository();
+        Preprocessor preprocessor = new Preprocessor(numberRepository);
+        preprocessor.Preprocessing("1,2;3");
+        assertEquals(numberRepository.getNumbers().size(), 3);
+        assertEquals(numberRepository.getNumbers().get(0), 1);
+        assertEquals(numberRepository.getNumbers().get(1), 2);
+        assertEquals(numberRepository.getNumbers().get(2), 3);
+    }
+
+
 }
