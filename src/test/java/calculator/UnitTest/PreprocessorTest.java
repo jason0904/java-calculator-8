@@ -89,7 +89,7 @@ public class PreprocessorTest {
     public void normalProcessTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        preprocessor.Preprocessing("1,2;3");
+        preprocessor.Preprocessing("1,2:3");
         assertEquals(numberRepository.getNumbers().size(), 3);
         assertEquals(numberRepository.getNumbers().get(0), 1);
         assertEquals(numberRepository.getNumbers().get(1), 2);
