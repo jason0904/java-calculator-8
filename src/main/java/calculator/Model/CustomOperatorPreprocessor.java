@@ -29,8 +29,8 @@ public class CustomOperatorPreprocessor {
         return false;
     }
 
-    public void setCustomOperator(char customOperator) {
-        
+    public void setCustomOperator(char customOperator) { 
+              
         this.customOperator = new CustomOperator(customOperator);
     }
     

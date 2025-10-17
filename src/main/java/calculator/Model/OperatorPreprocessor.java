@@ -6,6 +6,10 @@ import java.util.Arrays;
 
 public class OperatorPreprocessor {
 
+    /*
+     * 연산자인지 확인하는 클래스.
+     */
+
     private final CustomOperatorPreprocessor customOperatorProcessor;
     private final List<Character> operatorList = new ArrayList<>(Arrays.asList(':',','));
 
