@@ -9,7 +9,7 @@ public class Preprocessor {
      */
     
 
-    private Character lastChar = null;
+    private LastChar lastChar = null;
     private final NumberPreprocessor numberPreprocessor = new NumberPreprocessor();
     private final CustomOperatorPreprocessor customOperatorProcessor = new CustomOperatorPreprocessor();
     private final NumberRepository numberRepository;
@@ -74,13 +74,13 @@ public class Preprocessor {
     private void processCustomOperator(StringBuilder calculateStringBuilder) {
         customOperatorProcessor.setCustomOperatorFlag(true);
         customOperatorProcessor.setCustomOperator(calculateStringBuilder.charAt(2));
-        lastChar = calculateStringBuilder.charAt(5);
+        lastChar = new LastChar(calculateStringBuilder.charAt(5));
         calculateStringBuilder.delete(0, 5);
     }
 
     private void processOperator(StringBuilder calculateStringBuilder) {
         validateOperatorPosition(calculateStringBuilder.toString());
-        lastChar = calculateStringBuilder.charAt(0);
+        lastChar = new LastChar(calculateStringBuilder.charAt(0));
         calculateStringBuilder.deleteCharAt(0);
     }
 
@@ -91,18 +91,18 @@ public class Preprocessor {
         if (checkCharIsLast(calculateString)) {
             throw new IllegalArgumentException("마지막문자가 연산자입니다.");
         }
-        if (operatorPreprocessor.isCharOperator(lastChar)) {
+        if (operatorPreprocessor.isCharOperator(lastChar.getLastChar())) {
             throw new IllegalArgumentException("연산자가 두번 연속 쓰였습니다.");
         }
     }
 
     private void processNumber(StringBuilder calculateStringBuilder) {
-        if (lastChar != null && !Util.isCharInteger(lastChar)) {
+        if (lastChar != null && !Util.isCharInteger(lastChar.getLastChar())) {
             processNumberStringToNumber();
         }
         char currentChar = calculateStringBuilder.charAt(0);
         numberPreprocessor.numberContinuousCharCalculate(currentChar);
-        lastChar = currentChar;
+        lastChar = new LastChar(currentChar);
         calculateStringBuilder.deleteCharAt(0);
     }
 
@@ -112,7 +112,7 @@ public class Preprocessor {
     }
 
     private void processBlank(StringBuilder calculateStringBuilder) {
-        lastChar = calculateStringBuilder.charAt(0);
+        lastChar = new LastChar(calculateStringBuilder.charAt(0));
         calculateStringBuilder.deleteCharAt(0);
     }
 
