@@ -4,6 +4,11 @@ import calculator.Model.Calculator;
 import calculator.View.CalculatorIO;
 
 public class CalculatorController {
+
+    /*
+     * 계산기 컨트롤러 클래스.
+     */
+
     private Calculator calculator = new Calculator();
     private CalculatorIO calculatorIO = new CalculatorIO();
 
