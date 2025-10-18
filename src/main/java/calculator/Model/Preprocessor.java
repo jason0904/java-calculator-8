@@ -1,7 +1,5 @@
 package calculator.Model;
 
-import calculator.Util.Util;
-
 public class Preprocessor {
 
     /*
@@ -60,7 +58,7 @@ public class Preprocessor {
             processOperator(calculateStringBuilder);
             return;
         } 
-        else if (Util.isCharInteger(calculateStringBuilder.charAt(0))) {
+        else if (Character.isDigit(calculateStringBuilder.charAt(0))) {
             processNumber(calculateStringBuilder);
             return;
         } 
@@ -97,7 +95,7 @@ public class Preprocessor {
     }
 
     private void processNumber(StringBuilder calculateStringBuilder) {
-        if (lastChar != null && !Util.isCharInteger(lastChar.getLastChar())) {
+        if (lastChar != null && !Character.isDigit(lastChar.getLastChar())) {
             processNumberStringToNumber();
         }
         char currentChar = calculateStringBuilder.charAt(0);
