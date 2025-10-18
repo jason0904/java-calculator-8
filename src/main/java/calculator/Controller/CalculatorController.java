@@ -9,12 +9,12 @@ public class CalculatorController {
      * 계산기 컨트롤러 클래스.
      */
 
-    private Calculator calculator = new Calculator();
-    private CalculatorIO calculatorIO = new CalculatorIO();
+    private final Calculator calculator = new Calculator();
+    private final CalculatorIO calculatorIO = new CalculatorIO();
 
     public void run() {
-        String input = calculatorIO.Input();
+        String input = calculatorIO.readInput();
         Long result = calculator.calculate(input);
-        calculatorIO.Output(result);
+        calculatorIO.printOutput(result);
     }
 }
