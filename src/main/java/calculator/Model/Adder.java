@@ -1,6 +1,7 @@
 package calculator.Model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Adder {
 
@@ -9,13 +10,10 @@ public class Adder {
      */
 
     public long sumNumbers(List<Long> numbers) {
-        long sum = 0;
-        for(long num : numbers) sum = Math.addExact(sum, num);
-        
-        return sum;
+        Objects.requireNonNull(numbers);
+        return numbers.stream()
+                      .mapToLong(Long::longValue)
+                      .reduce(0L, (a, b) -> Math.addExact(a, b));
     }
-
-
-    
 
 }
