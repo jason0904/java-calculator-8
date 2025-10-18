@@ -12,7 +12,7 @@ public class Calculator {
 
 
     public Long calculate(String calculateString) {
-        preprocessor.Preprocessing(calculateString);
+        preprocessor.preprocessing(calculateString);
         return adder.sumNumbers(numberRepository.getNumbers());
 
     }

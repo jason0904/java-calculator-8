@@ -37,7 +37,7 @@ public class Preprocessor {
         return false;
     }
 
-    public void Preprocessing(String calculateString) throws IllegalArgumentException {
+    public void preprocessing(String calculateString) throws IllegalArgumentException {
         if (checkStringEmpty(calculateString)) {
             throw new IllegalArgumentException("문자열이 비어있습니다.");
         }

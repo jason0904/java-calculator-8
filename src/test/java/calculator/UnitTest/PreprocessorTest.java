@@ -19,7 +19,7 @@ public class PreprocessorTest {
     public void customDelimiterCalculateTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        preprocessor.Preprocessing("//;\\n1");
+        preprocessor.preprocessing("//;\\n1");
         assertEquals(1, numberRepository.getNumbers().size());
         assertEquals(1, numberRepository.getNumbers().get(0));        
     }
@@ -30,7 +30,7 @@ public class PreprocessorTest {
     public void doubleOperatorTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing("1,,2");});
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.preprocessing("1,,2");});
     }
 
 
@@ -40,7 +40,7 @@ public class PreprocessorTest {
     public void firstCharIsOperatorTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing(",2");});
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.preprocessing(",2");});
     }
 
     //마지막 문자 연산자인 경우
@@ -49,7 +49,7 @@ public class PreprocessorTest {
     public void lastCharIsOperatorTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing("2,");});
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.preprocessing("2,");});
     }    
 
     //공백 문자열 에러 체크
@@ -58,7 +58,7 @@ public class PreprocessorTest {
     public void blankStringTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing("");});
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.preprocessing("");});
     }
     
     //입력값 공백 무시체크
@@ -67,7 +67,7 @@ public class PreprocessorTest {
     public void ignoreBlankTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        preprocessor.Preprocessing(" 1 , 2 ");
+        preprocessor.preprocessing(" 1 , 2 ");
         assert(numberRepository.getNumbers().size() == 2);
         assert(numberRepository.getNumbers().get(0) == 1);
         assert(numberRepository.getNumbers().get(1) == 2);
@@ -80,7 +80,7 @@ public class PreprocessorTest {
     public void invalidCharacterTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        assertThrows(IllegalArgumentException.class, () -> {preprocessor.Preprocessing("1,a2");});
+        assertThrows(IllegalArgumentException.class, () -> {preprocessor.preprocessing("1,a2");});
     }
 
     //정상 구동 체크
@@ -89,7 +89,7 @@ public class PreprocessorTest {
     public void normalProcessTest() {
         NumberRepository numberRepository = new NumberRepository();
         Preprocessor preprocessor = new Preprocessor(numberRepository);
-        preprocessor.Preprocessing("1,2:3");
+        preprocessor.preprocessing("1,2:3");
         assertEquals(numberRepository.getNumbers().size(), 3);
         assertEquals(numberRepository.getNumbers().get(0), 1);
         assertEquals(numberRepository.getNumbers().get(1), 2);
