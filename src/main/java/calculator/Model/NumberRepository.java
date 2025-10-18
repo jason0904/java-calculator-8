@@ -19,7 +19,7 @@ public class NumberRepository {
     }
 
     public List<Long> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return Collections.unmodifiableList(new ArrayList<>(numbers));
     }
 
 }
