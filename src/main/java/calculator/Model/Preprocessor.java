@@ -105,7 +105,9 @@ public class Preprocessor {
     }
 
     private void processNumberStringToNumber() {
-        if (!numberPreprocessor.isNumberStringEmpty()) numberRepository.addNumber(numberPreprocessor.returnNumber());
+        if (!numberPreprocessor.isNumberStringEmpty()) {
+            numberRepository.addNumber(numberPreprocessor.returnNumber());
+        }
         numberPreprocessor.resetTempNumber();
     }
 
