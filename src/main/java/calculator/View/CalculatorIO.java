@@ -1,6 +1,7 @@
 package calculator.View;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Objects;
 
 public class CalculatorIO {
 
@@ -8,20 +9,17 @@ public class CalculatorIO {
      * 계산기의 Input, Output을 담당.
      */
 
-    private static final String Input_String = "덧셈할 문자열을 입력해 주세요.";
-    private static final String Output_String = "결과 : %d";
+    private static final String INPUT_PROMPT = "덧셈할 문자열을 입력해 주세요.";
+    private static final String OUTPUT_FORMAT = "결과 : %d%n";
 
-    public String Input() {
-        
-        System.out.println(Input_String);
+    public String readInput() {
+        System.out.println(INPUT_PROMPT);
         String inputString = Console.readLine();
-
         return inputString;
-
     }
 
-    public void Output(Long result) {
-        System.out.printf(Output_String, result);
+    public void printOutput(Long result) {
+        System.out.printf(OUTPUT_FORMAT, result);
     }
 
 }
